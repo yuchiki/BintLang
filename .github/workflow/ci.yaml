@@ -3,8 +3,9 @@ on:
   pull_request:
     branches:
       - main
-  branches:
-    - formatter-ci
+  push:
+    branches:
+      - formatter-ci
 jobs:
   format:
     runs-on: ubuntu-latest
