@@ -1,4 +1,6 @@
 name: CI
+env:
+  DOTNET_VERSION: '9.0.101'
 on:
   pull_request:
     branches:
@@ -11,8 +13,18 @@ jobs:
       - name: Setup .NET SDK
         uses: actions/setup-dotnet@v4
         with:
-          dotnet-version: '9.0.101'
+          dotnet-version: ${{ env.DOTNET_VERSION }}
       - name: Install Fantomas tool
         run: dotnet tool restore
       - name: Run Fantomas and check for changes
         run: dotnet fantomas --check .
+  unit-test:
+      runs-on: ubuntu-latest
+      steps:
+        - uses: actions/checkout@v4
+        - name: Setup .NET SDK
+          uses: actions/setup-dotnet@v4
+          with:
+            dotnet-version: ${{ env.DOTNET_VERSION }}
+        - name: unit-test
+          run: dotnet test MyLangLib.Tests
