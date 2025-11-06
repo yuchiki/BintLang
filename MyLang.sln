@@ -7,6 +7,8 @@ Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "MyLang", "MyLang\MyLang.fsp
 EndProject
 Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "MyLangLib", "MyLangLib\MyLangLib.fsproj", "{4D4A24D1-5BB6-4F36-8772-75087B5C2D9E}"
 EndProject
+Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "MyLangLib.Tests", "MyLangLib.Tests\MyLangLib.Tests.fsproj", "{1B750988-6E18-4D08-8E51-8E69F47D8C87}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -24,5 +26,9 @@ Global
 		{4D4A24D1-5BB6-4F36-8772-75087B5C2D9E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4D4A24D1-5BB6-4F36-8772-75087B5C2D9E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4D4A24D1-5BB6-4F36-8772-75087B5C2D9E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1B750988-6E18-4D08-8E51-8E69F47D8C87}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1B750988-6E18-4D08-8E51-8E69F47D8C87}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1B750988-6E18-4D08-8E51-8E69F47D8C87}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1B750988-6E18-4D08-8E51-8E69F47D8C87}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

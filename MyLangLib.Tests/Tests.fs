@@ -4,4 +4,6 @@ open System
 open Xunit
 
 [<Fact>]
-let ``My test`` () = Assert.True(false)
+let ``Ensure MyLangLib.Parse is available`` () =
+    let _ = Parser.Parse
+    Assert.True(true)

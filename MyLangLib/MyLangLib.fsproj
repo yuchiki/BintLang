@@ -11,6 +11,7 @@
     <Compile Include="Tokenizer.fs" />
     <Compile Include="Parser.fs" />
     <Compile Include="Executor.fs" />
+    <Compile Include="MyLangLib.fs" />
   </ItemGroup>
 
 </Project>
