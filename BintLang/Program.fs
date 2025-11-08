@@ -4,10 +4,7 @@ open Tokenizer
 open Executor
 open Ast
 
-
-
-[<EntryPoint>]
-let main _ =
+let main_ _ =
     while true do
         printf "> "
         let input = Console.ReadLine()
@@ -30,3 +27,10 @@ let main _ =
         | Error e -> printfn "Error: %A" e
 
     failwith "Unreachable"
+
+
+
+[<EntryPoint>]
+let main argv =
+    printfn "Hello"
+    0
