@@ -27,4 +27,4 @@ jobs:
           with:
             dotnet-version: ${{ env.DOTNET_VERSION }}
         - name: unit-test
-          run: dotnet test MyLangLib.Tests
+          run: dotnet test BintLangLib.Tests

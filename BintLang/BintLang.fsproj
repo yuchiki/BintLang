@@ -10,7 +10,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\MyLangLib\MyLangLib.fsproj" />
+    <ProjectReference Include="..\BintLangLib\BintLangLib.fsproj" />
   </ItemGroup>
 
 </Project>
