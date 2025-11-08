@@ -3,11 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "MyLang", "MyLang\MyLang.fsproj", "{75BA3FBF-E4A2-4ACD-9B2A-33B4D6626DF0}"
+Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "BintLang", "BintLang\BintLang.fsproj", "{75BA3FBF-E4A2-4ACD-9B2A-33B4D6626DF0}"
 EndProject
-Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "MyLangLib", "MyLangLib\MyLangLib.fsproj", "{4D4A24D1-5BB6-4F36-8772-75087B5C2D9E}"
+Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "BintLangLib", "BintLangLib\BintLangLib.fsproj", "{4D4A24D1-5BB6-4F36-8772-75087B5C2D9E}"
 EndProject
-Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "MyLangLib.Tests", "MyLangLib.Tests\MyLangLib.Tests.fsproj", "{1B750988-6E18-4D08-8E51-8E69F47D8C87}"
+Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "BintLangLib.Tests", "BintLangLib.Tests\BintLangLib.Tests.fsproj", "{1B750988-6E18-4D08-8E51-8E69F47D8C87}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

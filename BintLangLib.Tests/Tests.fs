@@ -3,6 +3,6 @@
 open Xunit
 
 [<Fact>]
-let ``Ensure MyLangLib.Parse is available`` () =
+let ``Ensure BintLangLib.Parse is available`` () =
     let _ = Parser.Parse
     Assert.True(true)
