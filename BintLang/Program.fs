@@ -32,5 +32,6 @@ let main_ _ =
 
 [<EntryPoint>]
 let main argv =
-    printfn "Hello"
+    let input = stdin.ReadToEnd()
+    printf "input: %s" input
     0
