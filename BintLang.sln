@@ -9,6 +9,8 @@ Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "BintLangLib", "BintLangLib\
 EndProject
 Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "BintLangLib.Tests", "BintLangLib.Tests\BintLangLib.Tests.fsproj", "{1B750988-6E18-4D08-8E51-8E69F47D8C87}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BintLang.IntegrationTests", "BintLang.IntegrationTests\BintLang.IntegrationTests.fsproj", "{F826A536-A77E-4D22-93B0-827CE00CE574}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -30,5 +32,9 @@ Global
 		{1B750988-6E18-4D08-8E51-8E69F47D8C87}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1B750988-6E18-4D08-8E51-8E69F47D8C87}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1B750988-6E18-4D08-8E51-8E69F47D8C87}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F826A536-A77E-4D22-93B0-827CE00CE574}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F826A536-A77E-4D22-93B0-827CE00CE574}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F826A536-A77E-4D22-93B0-827CE00CE574}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F826A536-A77E-4D22-93B0-827CE00CE574}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
