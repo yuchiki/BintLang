@@ -1,37 +1,37 @@
 ﻿open System
-open Parser
-open Tokenizer
-open Executor
-open Ast
 
-let main_ _ =
-    while true do
-        printf "> "
-        let input = Console.ReadLine()
-        let tokens = munch input
+let rec prettyPrint: Executor.value -> string =
+    function
+    | Executor.Leaf -> "@"
+    | Executor.Branch(l, r) -> $"({prettyPrint l}, {prettyPrint r})"
 
-        match tokens with
-        | Ok tokens -> printfn "Tokens: %A" tokens
-        | Error e -> printfn "Error: %A" e
+type ResultBuilder() =
+    member this.Bind(computation: Result<'a, 'err>, binder: 'a -> Result<'b, 'err>) : Result<'b, 'err> =
+        match computation with
+        | Ok a -> binder a
+        | Error err -> Error err
 
-        let ast = Result.bind Parse tokens
+    member this.Return(x: 'a) : Result<'a, 'err> = Ok x
 
-        match ast with
-        | Ok ast -> printfn "AST: %A" ast
-        | Error e -> printfn "Error: %A" e
-
-        let result = Result.bind (Executor.eval >> Ok) ast
-
-        match result with
-        | Ok result -> printfn "Result: %A" result
-        | Error e -> printfn "Error: %A" e
-
-    failwith "Unreachable"
+    member this.Zero() = Ok()
 
 
+let result = new ResultBuilder()
+
+let handleResult: Result<unit, 'a> -> unit =
+    function
+    | Ok() -> ()
+    | Error err -> raise (Exception(sprintf "error: %A" err))
 
 [<EntryPoint>]
-let main argv =
-    let input = stdin.ReadToEnd()
-    printf "input: %s" input
+let main_ _ =
+    result {
+        let input = stdin.ReadToEnd()
+        let! tokens = Tokenizer.matchString input
+        let! ast = Parser.Parse tokens
+        let value = Executor.eval ast
+        prettyPrint value |> printfn "%s"
+    }
+    |> handleResult
+
     0
