@@ -32,3 +32,6 @@ let ``parse Branch recursively`` () =
       Leaf
       RParen ]
     |> parseMustSucceedAs (Ast.Branch(Ast.Branch(Ast.Leaf, Ast.Branch(Ast.Leaf, Ast.Leaf)), Ast.Leaf))
+
+[<Fact>]
+let ``parse fails if unparsable`` () = [ Leaf; Leaf ] |> parseMustFail
