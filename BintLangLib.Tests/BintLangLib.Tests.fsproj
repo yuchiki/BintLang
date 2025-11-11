@@ -7,7 +7,10 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Include="Tests.fs" />
+    <Compile Include="TestUtils.fs" />
+    <Compile Include="Tokenizer.Tests.fs" />
+    <Compile Include="Parser.Tests.fs" />
+    <Compile Include="Executor.Tests.fs" />
     <Compile Include="Program.fs" />
   </ItemGroup>
 

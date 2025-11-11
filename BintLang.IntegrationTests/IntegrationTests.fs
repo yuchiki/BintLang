@@ -3,6 +3,17 @@ module IntegrationTests
 open Xunit
 open TestingUtils
 
-[<Fact>]
-let ``test1`` () =
-    run "hoge" [] |> ensureSucceed |> outputIs "input: hoge"
+
+[<Theory>]
+[<InlineData("@", "@")>]
+[<InlineData("(@, @)", "(@, @)")>]
+[<InlineData("(@, ((@, @), @))", "(@, ((@, @), @))")>]
+[<InlineData("(   @ ,  @)", "(@, @)")>]
+let mustSucceed (input: string, output: string) =
+    run input [] |> ensureSucceed |> outputIs $"{output}\n" |> ignore
+
+
+[<Theory>]
+[<InlineData("()")>]
+[<InlineData("@ @")>]
+let mustFailWithParseError (input: string) = run input [] |> ensureFail

@@ -48,21 +48,20 @@ let foldBinaryOperator
     let firstExpr, rest = nextParser input
     applyAsMany (foldBinaryOperator' operatorMap nextParser) firstExpr rest
 
-let rec ParseAdditive: parser =
-    foldBinaryOperator (Map [ Plus, Add; Minus, Sub ]) ParseMultiplicative
-
-and ParseMultiplicative: parser =
-    foldBinaryOperator (Map [ Asterisk, Mul; Slash, Div ]) ParsePrimary
-
-and ParsePrimary: parser =
+let rec ParsePrimary: parser =
     function
-    | Tokens.Number n :: rest -> Number n, rest
-    | LParen :: _ as input -> input |> (preConsume LParen <| ParseAdditive |> postConsume RParen)
+    | Tokens.Leaf :: rest -> Leaf, rest
+    | LParen :: _ as input ->
+        let (lhs, restOfLhs) =
+            (preConsume LParen <| ParsePrimary |> postConsume Comma) input
+
+        let (rhs, restOfRhs) = (ParsePrimary |> postConsume RParen) restOfLhs
+        Branch(lhs, rhs), restOfRhs
     | rest -> raise (ParseError rest)
 
 let Parse (input: token list) : Result<expr, exn> =
     try
-        let expr, rest = ParseAdditive input
+        let expr, rest = ParsePrimary input
         if rest.IsEmpty then Ok expr else Error(ParseError rest)
     with ParseError rest ->
         Error(ParseError rest)

@@ -28,3 +28,13 @@ jobs:
             dotnet-version: ${{ env.DOTNET_VERSION }}
         - name: unit-test
           run: dotnet test BintLangLib.Tests
+  integration-test:
+      runs-on: ubuntu-latest
+      steps:
+        - uses: actions/checkout@v4
+        - name: Setup .NET SDK
+          uses: actions/setup-dotnet@v4
+          with:
+            dotnet-version: ${{ env.DOTNET_VERSION }}
+        - name: unit-test
+          run: dotnet test BintLang.IntegrationTests

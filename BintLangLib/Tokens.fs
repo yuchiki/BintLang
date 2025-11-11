@@ -1,11 +1,7 @@
 module Tokens
 
 type token =
-    | Number of int
-    | Plus
-    | Minus
-    | Asterisk
-    | Slash
+    | Leaf
     | LParen
     | RParen
-    | Equal
+    | Comma
