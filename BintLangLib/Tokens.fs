@@ -5,3 +5,4 @@ type token =
     | LParen
     | RParen
     | Comma
+    | Identifier of string

@@ -16,6 +16,12 @@ let ``parse Branch`` () =
     [ LParen; Leaf; Comma; Leaf; RParen ]
     |> parseMustSucceedAs (Ast.Branch(Ast.Leaf, Ast.Leaf))
 
+
+[<Fact>]
+let ``parse variable`` () =
+    [ Identifier "foo" ] |> parseMustSucceedAs (Ast.Variable "foo")
+
+
 [<Fact>]
 let ``parse Branch recursively`` () =
     [ LParen

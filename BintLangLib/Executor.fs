@@ -6,7 +6,22 @@ type value =
     | Leaf
     | Branch of value * value
 
-let rec eval: expr -> value =
+exception VariableNotFound of exn
+
+type environment = Map<string, value>
+
+let rec eval' (env: environment) : expr -> value =
     function
     | Ast.Leaf -> Leaf
-    | Ast.Branch(lhs, rhs) -> Branch(eval lhs, eval rhs)
+    | Ast.Branch(lhs, rhs) -> Branch(eval' env lhs, eval' env rhs)
+    | Ast.Variable id ->
+        try
+            env[id]
+        with e ->
+            e |> VariableNotFound |> raise
+
+let eval (env: environment) (e: expr) : Result<value, exn> =
+    try
+        e |> eval' env |> Ok
+    with VariableNotFound _ as e ->
+        Error e

@@ -29,7 +29,7 @@ let main_ _ =
         let input = stdin.ReadToEnd()
         let! tokens = Tokenizer.matchString input
         let! ast = Parser.Parse tokens
-        let value = Executor.eval ast
+        let! value = Executor.eval Map.empty ast
         prettyPrint value |> printfn "%s"
     }
     |> handleResult

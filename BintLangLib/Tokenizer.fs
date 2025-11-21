@@ -1,6 +1,7 @@
 module Tokenizer
 
 open System
+open System.Text.RegularExpressions
 open Tokens
 
 exception MatchError of rest: string
@@ -26,11 +27,22 @@ let (|MatchSpace|_|) =
     | Cons(c, rest) when List.contains c spaceLike -> Some rest
     | _ -> None
 
+let (|MatchIdentifier|_|) (str: string) : (string * string) option =
+    let m = Regex("^[a-zA-z][a-zA-z0-9]+").Match str
+
+    if not m.Success then
+        None
+    else
+        let identifier = m.Value
+        let rest = str[identifier.Length ..]
+        Some(identifier, rest)
+
 let rec matchString1: string -> (token option * string) option =
     function
     | Empty -> None
     | MatchSpace rest -> Some(None, rest)
     | MatchToken(token, rest) -> Some(Some token, rest)
+    | MatchIdentifier(identifier, rest) -> Some(Some(Identifier identifier), rest)
     | rest -> raise (MatchError rest)
 
 let matchString (input: string) : Result<token list, exn> =
