@@ -51,6 +51,7 @@ let foldBinaryOperator
 let rec ParsePrimary: parser =
     function
     | Tokens.Leaf :: rest -> Leaf, rest
+    | Tokens.Identifier identifier :: rest -> Variable identifier, rest
     | LParen :: _ as input ->
         let (lhs, restOfLhs) =
             (preConsume LParen <| ParsePrimary |> postConsume Comma) input

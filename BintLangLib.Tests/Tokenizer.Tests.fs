@@ -17,6 +17,10 @@ let ``Tokenizer.matchString tokenizes simple symbols`` () =
     matchMustSucceedAs [ Leaf; LParen; RParen; Comma ] "@(),"
 
 [<Fact>]
+let ``Tokenizer.matchString tokenizes identifier`` () =
+    matchMustSucceedAs [ Identifier "fooFoo"; Comma ] "fooFoo,"
+
+[<Fact>]
 let ``Tokenizer.matchString tokenizes ignoring spaces`` () =
     matchMustSucceedAs [ Leaf; LParen; RParen; Comma ] "@(  ),"
 

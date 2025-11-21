@@ -4,12 +4,22 @@ open Xunit
 open TestUtils
 open Ast
 
-let parseMustSucceedAs (expected: Executor.value) : expr -> unit = eval >> Ok >> mustSucceedAs expected
+let evalMustSucceedAs (expected: Executor.value) : expr -> unit =
+    eval Map.empty >> mustSucceedAs expected
 
+let evalWithEnvMustSucceedAs (env: environment) (expected: Executor.value) : expr -> unit =
+    eval env >> mustSucceedAs expected
+
+let evalMustFail: expr -> unit = eval Map.empty >> mustFail
 
 [<Fact>]
 let ``base cases`` () =
-    Leaf |> parseMustSucceedAs value.Leaf
+    Leaf |> evalMustSucceedAs value.Leaf
 
     Branch(Ast.Leaf, Ast.Leaf)
-    |> parseMustSucceedAs (value.Branch(value.Leaf, value.Leaf))
+    |> evalMustSucceedAs (value.Branch(value.Leaf, value.Leaf))
+
+    Variable "foo"
+    |> evalWithEnvMustSucceedAs (Map.ofList [ ("foo", value.Leaf) ]) value.Leaf
+
+    Variable "notExistingVar" |> evalMustFail
