@@ -6,8 +6,9 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Include="Tokens.fs" />
-    <Compile Include="Ast.fs" />
+    <Compile Include="types/Tokens.fs" />
+    <Compile Include="types/Ast.fs" />
+    <Compile Include="types/Values.fs" />
     <Compile Include="Tokenizer.fs" />
     <Compile Include="Parser.fs" />
     <Compile Include="Executor.fs" />
