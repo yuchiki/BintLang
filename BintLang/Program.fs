@@ -1,9 +1,9 @@
 ﻿open System
 
-let rec prettyPrint: Executor.value -> string =
+let rec prettyPrint: Values.value -> string =
     function
-    | Executor.Leaf -> "@"
-    | Executor.Branch(l, r) -> $"({prettyPrint l}, {prettyPrint r})"
+    | Values.Leaf -> "@"
+    | Values.Branch(l, r) -> $"({prettyPrint l}, {prettyPrint r})"
 
 type ResultBuilder() =
     member this.Bind(computation: Result<'a, 'err>, binder: 'a -> Result<'b, 'err>) : Result<'b, 'err> =

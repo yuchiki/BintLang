@@ -1,10 +1,8 @@
 module Executor
 
 open Ast
+open Values
 
-type value =
-    | Leaf
-    | Branch of value * value
 
 exception VariableNotFound of exn
 
