@@ -28,7 +28,7 @@ let (|MatchSpace|_|) =
     | _ -> None
 
 let (|MatchIdentifier|_|) (str: string) : (string * string) option =
-    let m = Regex("^[a-zA-z][a-zA-z0-9]+").Match str
+    let m = Regex("^[a-zA-Z][a-zA-Z0-9]*").Match str
 
     if not m.Success then
         None
